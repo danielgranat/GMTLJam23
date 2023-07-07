@@ -7,20 +7,15 @@ public class ChickenPlayerMovementController : MonoBehaviour
     [SerializeField] private CharacterController controller;
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float jumpTimeInterval = 5;
     [SerializeField] private float gravityValue = -9.81f;
 
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private Vector3 moveDirection = Vector3.right;
+    private Vector3 moveDirection = Vector3.left;
+    private bool turnLeft;
+    private bool turnRight;
 
-    private void Start()
-    {
-        InvokeRepeating("Jump", jumpTimeInterval, jumpTimeInterval);
-    }
-
-
-    void FixedUpdate()
+     void FixedUpdate()
     {
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
@@ -32,6 +27,18 @@ public class ChickenPlayerMovementController : MonoBehaviour
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (turnLeft)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Vector3.forward), 4f);
+            turnLeft = false;
+        }
+
+        if (turnRight)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.LookRotation(Vector3.back), 4f);
+            turnRight = false;
+        }
     }
 
     private void Jump()
@@ -40,19 +47,21 @@ public class ChickenPlayerMovementController : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.name);
-        
+    {        
         if (other.CompareTag("LeftWall"))
         {
             moveDirection = Vector3.right;
-            Debug.Log("inL");
+            turnRight = true;
         }
         else if (other.CompareTag("RightWall"))
         {
             moveDirection = Vector3.left;
-            Debug.Log("inR");
-
+            turnLeft = true;
+        }
+       
+        if (other.CompareTag("Floor"))
+        {
+            Jump();
         }
     }
 }
