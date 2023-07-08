@@ -15,6 +15,6 @@ MonoBehaviour:
   lives: {fileID: 11400000, guid: 7e48394fc6a654c6d80744c85bcadf4b, type: 2}
   aPlayerScore: {fileID: 11400000, guid: bddfd9c318d0f4953a67963792f45082, type: 2}
   bPlayerScore: {fileID: 11400000, guid: d216273785eef4de0a0a2a6301cbf9bb, type: 2}
-  chickenScore: 10
+  chickenScore: 100
   startLives: 3
   comboTimeout: 5
