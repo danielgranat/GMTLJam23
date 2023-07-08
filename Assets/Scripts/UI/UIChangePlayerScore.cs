@@ -9,6 +9,11 @@ public class UIChangePlayerScore : MonoBehaviour
     // Update is called once per frame
     public void OnChange(int val)
     {
-        Game.PlayerScore.Increment(val);
+        Game.OnHit(val);
+    }
+
+    public void OnMiss()
+    {
+        Game.OnMiss();
     }
 }

@@ -7,23 +7,22 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu]
 public class GameSystem : ScriptableObject
 {
+
+    private static readonly string[] scenes =
+        {"Level1","Level2","ReverseRoles","Level1","Level2","Win"};
+
     [SerializeField] FloatVar lives;
     [SerializeField] FloatVar aPlayerScore;
     [SerializeField] FloatVar bPlayerScore;
-    [SerializeField] int startLives;
+    [SerializeField] int chickenScore = 10;
+    [SerializeField] int startLives = 3;
+    [SerializeField] float comboTimeout = 5;
 
     private FloatVar currentPlayer;
-
     private int currScene = 0;
-    private static readonly string[] scenes =
-    {
-        "Level1",
-        "Level2",
-        "ReverseRoles",
-        "Level1",
-        "Level2",
-        "Win"
-    };
+    private float lastHitTime;
+    private int comboCounter;
+    
 
 
     public FloatVar PlayerLives => lives;
@@ -36,6 +35,8 @@ public class GameSystem : ScriptableObject
     private void Reset()
     {
         currScene = 0;
+        comboCounter = 0;
+        lastHitTime = 0;
         lives.Decrement(lives.Value);
         lives.Increment(startLives);
 
@@ -66,6 +67,29 @@ public class GameSystem : ScriptableObject
         nextScene(scenes[++currScene]);
     }
 
+    public void OnHit(int chickenGrade)
+    {
+        int score = chickenScore * chickenGrade;
+        if (comboCounter > 0 && Time.realtimeSinceStartup - lastHitTime <= comboTimeout)
+        {
+            ++comboCounter;
+            score += (int)(comboCounter * (score * 0.1));
+            Debug.Log("In combo");
+        }
+        else {
+            comboCounter = 1;
+            Debug.Log("Start combo");
+        }
+        lastHitTime = Time.realtimeSinceStartup;
+        currentPlayer.Increment(score);
+    }
+
+    public void OnMiss()
+    {
+        Debug.Log("Reset combo");
+        comboCounter = 0;
+    }
+
     public void DecrementLife()
     {
         lives.Decrement(1);
@@ -94,5 +118,14 @@ public class GameSystem : ScriptableObject
         SceneManager.LoadScene(scene);
         lives.Decrement(lives.Value);
         lives.Increment(startLives);
+    }
+
+    public float ComboExpiration {
+        get {
+            if (comboCounter.Equals(0) || Time.realtimeSinceStartup - lastHitTime > comboTimeout ) return 0;
+
+            //Debug.Log($"{comboCounter} => {lastHitTime} => {Time.realtimeSinceStartup - lastHitTime } => {(Time.realtimeSinceStartup - lastHitTime) / comboTimeout}");
+            return Math.Min(1, 1 - (Time.realtimeSinceStartup - lastHitTime) / comboTimeout);
+        }
     }
 }
