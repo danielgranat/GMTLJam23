@@ -9,14 +9,16 @@ TagManager:
   - Floor
   - Ceiling
   - Chicken
+  - Egg
+  - Arrow
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Eggs
   - Water
   - UI
-  - 
+  - Chickens
   - 
   - 
   - 

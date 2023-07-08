@@ -6,17 +6,17 @@ public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] GameSystem gameSys;
     [SerializeField] float shildInterval = 2;
+    [SerializeField] AudioClip eggHit;
 
     private float shildTimer;
     private Renderer[] renderers;
-    private Color origColor;
-    private float flashTime;
+    private AudioSource aus;
     private float blinkIdx = 0;
 
     private void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
-        flashTime = shildInterval;
+        aus = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -54,15 +54,42 @@ public class PlayerCollision : MonoBehaviour
             {
                 TakeDamageStart();
             }
+            else if (collision.gameObject.CompareTag("Egg"))
+            {
+                aus.clip = eggHit;
+                aus.Play();
+                TakeDamageStart();
+                Destroy(collision.gameObject);
+            }
         }
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"OnTriggerEnter, {other.tag}");
+
+        if (Time.realtimeSinceStartup > shildTimer)
+        {
+            if (other.CompareTag("Chicken"))
+            {
+                TakeDamageStart();
+            }
+            else if (other.CompareTag("Egg"))
+            {
+                aus.clip = eggHit;
+                aus.Play();
+                TakeDamageStart();
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     private void TakeDamageStart()
     {
         blinkIdx = 0;
         shildTimer = Time.realtimeSinceStartup + shildInterval;
-        //gameSys.DecrementLife();
+        gameSys.DecrementLife();
     }
 
     //private void FlashDamageStop()

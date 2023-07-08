@@ -17,6 +17,12 @@ public class ProjectileController : MonoBehaviour
         set { gameSys = value; }
     }
 
+    private void Start()
+    {
+        AudioSource aus = GetComponent<AudioSource>();
+        aus.Play();
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -31,6 +37,7 @@ public class ProjectileController : MonoBehaviour
         if (other.CompareTag("Chicken"))
         {
             var chickenController = other.GetComponent<ChickenController>();
+            chickenController.PlayHit();
             gameSys.OnHit(1, chickenController);
             Destroy(gameObject);
         }

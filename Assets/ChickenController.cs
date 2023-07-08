@@ -6,8 +6,23 @@ public class ChickenController : MonoBehaviour
 {
     [SerializeField] private GameObject chieckenPrefab;
     [SerializeField] private int tier;
+    [SerializeField] AudioClip[] chickenClucks;
 
     private Vector3 newPos = new Vector3(1, 1, 0);
+
+    private AudioSource chickenAudio;
+
+    private void Start()
+    {
+        chickenAudio = GetComponent<AudioSource>();
+    }
+
+    public void PlayHit()
+    {
+        chickenAudio.clip = chickenClucks[tier - 1];
+        chickenAudio.PlayOneShot(chickenAudio.clip);
+    }
+
     public void SplitChicken()
     {
         if (tier > 1 && tier <= 5)

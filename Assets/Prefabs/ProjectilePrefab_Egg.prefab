@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 007fec6d08ba0294d844cc0695875473, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 007fec6d08ba0294d844cc0695875473, type: 3}
 --- !u!1001 &6115439599933356653
@@ -77,8 +81,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 71655015003883656, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 71655015003883656, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 625111165501209982, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 769313207442834405, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2049501200855905624, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
       propertyPath: m_RootOrder
@@ -144,6 +160,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProjectilePrefab_Egg
       objectReference: {fileID: 0}
+    - target: {fileID: 2049501200855905638, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2049501200855905638, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_TagString
+      value: Egg
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475727390536979834, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510879139928392857, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128874470915846762, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482464820529791618, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a29e62b60334e4e98a253a7aaab3ca55, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
 --- !u!4 &5237454994673946421 stripped

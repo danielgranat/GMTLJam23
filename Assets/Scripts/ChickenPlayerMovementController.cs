@@ -22,11 +22,14 @@ public class ChickenPlayerMovementController : MonoBehaviour
     private bool canSpawnEgg = true;
     private bool mouseOver;
     private float timer;
+    
+    private float jumpThroteling = 0.5f;
 
     private void Awake()
     {
         timer = eggSpawnCooldown;
     }
+
     void Update()
     {
         Debug.Log(timer);
@@ -86,10 +89,15 @@ public class ChickenPlayerMovementController : MonoBehaviour
         isWalkingLeft = false;
     }
 
-    private void Jump()
+    private void Jump(float factor=1, bool force = false)
     {
-        playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        Debug.Log("Floor");
+        if (Time.realtimeSinceStartup > jumpThroteling)
+        {
+            jumpThroteling = Time.realtimeSinceStartup + 0.5f;
+            playerVelocity.y = (force ? 0 : playerVelocity.y)
+                + Mathf.Sqrt((factor * jumpHeight) * -3.0f * gravityValue);
+            Debug.Log("Jump");
+        }
     }
 
     private void SpawnEgg()
@@ -108,17 +116,28 @@ public class ChickenPlayerMovementController : MonoBehaviour
         {
             turnLeft = true;
         }
-       
+        else if (other.CompareTag("Player"))
+        {
+            Jump(0.2f,true);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         if (other.CompareTag("Floor"))
         {
             Jump();
         }
-
-        if (other.CompareTag("Player"))
-        {
-            Jump();
-        }
     }
+
+    //private void OnControllerColliderHit(ControllerColliderHit hit)
+    //{
+    //    if (hit.gameObject.CompareTag("Player"))
+    //    {
+    //        Jump(0.2f);
+    //    }
+
+    //}
 
     private void OnMouseDown()
     {
