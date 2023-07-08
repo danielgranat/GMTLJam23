@@ -130,6 +130,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 157264389, guid: 8ca5c543364cf3744b63d586cae7e8a4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 157264390, guid: 8ca5c543364cf3744b63d586cae7e8a4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070793103397574090, guid: 8ca5c543364cf3744b63d586cae7e8a4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4070793103397574091, guid: 8ca5c543364cf3744b63d586cae7e8a4, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4070793103397574095, guid: 8ca5c543364cf3744b63d586cae7e8a4, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -301,6 +317,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2187833531633703097, guid: 4619e31dce7f66f4ab57310dfeded403, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2187833531633703098, guid: 4619e31dce7f66f4ab57310dfeded403, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6249946507834217868, guid: 4619e31dce7f66f4ab57310dfeded403, type: 3}
       propertyPath: m_Name
       value: ChickenPrefab (2)
@@ -563,3 +587,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4619e31dce7f66f4ab57310dfeded403, type: 3}
+--- !u!1 &2034793448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4070793103397574196, guid: 8ca5c543364cf3744b63d586cae7e8a4, type: 3}
+  m_PrefabInstance: {fileID: 361486361}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2034793454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034793448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5b1fca8da886467ea90bc9290b2f03c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameSys: {fileID: 11400000, guid: 35e46fe102500478fb3ecba2e26add1f, type: 2}
+  shildInterval: 2
