@@ -8,6 +8,7 @@ TagManager:
   - LeftWall
   - Floor
   - Ceiling
+  - Chicken
   layers:
   - Default
   - TransparentFX

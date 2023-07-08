@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd1436942ef58164fb9f7e9150184682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSys: {fileID: 11400000, guid: 35e46fe102500478fb3ecba2e26add1f, type: 2}
   rb: {fileID: 2049501200855905639}
   speed: 200
   rotationSpeed: 6

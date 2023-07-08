@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIScore : MonoBehaviour
 {
-    [SerializeField] private GameSystem Game;
+    [SerializeField] private GameSystem gameSys;
 
 
     private TextMeshProUGUI text;
@@ -19,6 +19,6 @@ public class UIScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = Game.PlayerScore.Value.ToString();
+        text.text = gameSys.PlayerScore.Value.ToString();
     }
 }

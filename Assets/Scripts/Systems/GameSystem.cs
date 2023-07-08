@@ -22,7 +22,9 @@ public class GameSystem : ScriptableObject
     private int currScene = 0;
     private float lastHitTime;
     private int comboCounter;
-    
+    private int countProjectils;
+
+
 
 
     public FloatVar PlayerLives => lives;
@@ -37,6 +39,7 @@ public class GameSystem : ScriptableObject
         currScene = 0;
         comboCounter = 0;
         lastHitTime = 0;
+        countProjectils = 0;
         lives.Decrement(lives.Value);
         lives.Increment(startLives);
 
@@ -67,8 +70,15 @@ public class GameSystem : ScriptableObject
         nextScene(scenes[++currScene]);
     }
 
+    public void OnFire()
+    {
+        countProjectils++;
+    }
+
     public void OnHit(int chickenGrade)
     {
+        Debug.Log($"Projectile hit {countProjectils}");
+        --countProjectils;
         int score = chickenScore * chickenGrade;
         if (comboCounter > 0 && Time.realtimeSinceStartup - lastHitTime <= comboTimeout)
         {
@@ -86,7 +96,8 @@ public class GameSystem : ScriptableObject
 
     public void OnMiss()
     {
-        Debug.Log("Reset combo");
+        Debug.Log($"Projectile miss {countProjectils}");
+        --countProjectils;
         comboCounter = 0;
     }
 
@@ -128,4 +139,7 @@ public class GameSystem : ScriptableObject
             return Math.Min(1, 1 - (Time.realtimeSinceStartup - lastHitTime) / comboTimeout);
         }
     }
+
+    public bool CanDevilFire => countProjectils.Equals(0);
+    
 }

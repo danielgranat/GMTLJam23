@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimTransform: {fileID: 684952799}
   projectile: {fileID: 2049501200855905638, guid: a5d25a03e0e1e26419772a9998a2c886, type: 3}
+  gameSys: {fileID: 11400000, guid: 35e46fe102500478fb3ecba2e26add1f, type: 2}
 --- !u!1001 &4070793102149513569
 PrefabInstance:
   m_ObjectHideFlags: 0

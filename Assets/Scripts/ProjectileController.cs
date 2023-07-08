@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    [SerializeField] private GameSystem gameSys;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
 
     private bool hitCeiling;
+
+    public GameSystem GameSystem
+    {
+        set { gameSys = value; }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -21,12 +27,20 @@ public class ProjectileController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Chicken"))
+        {
+            gameSys.OnHit(1);
+            Destroy(gameObject);
+        }
+
         if (other.CompareTag("Ceiling"))
         {
             hitCeiling = true;
             rb.velocity = Vector3.zero;
             rb.useGravity = false;
 
+            gameSys.OnMiss();
+            Destroy(gameObject);
         }
     }
 }
