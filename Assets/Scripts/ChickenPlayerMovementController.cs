@@ -8,10 +8,10 @@ public class ChickenPlayerMovementController : MonoBehaviour
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] private Vector3 moveDirection = Vector3.left;
 
     private Vector3 playerVelocity;
     private bool groundedPlayer;
-    private Vector3 moveDirection = Vector3.left;
     private bool turnLeft;
     private bool turnRight;
 
