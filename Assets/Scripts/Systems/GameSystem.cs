@@ -24,15 +24,11 @@ public class GameSystem : ScriptableObject
     private int comboCounter;
     private int countProjectils;
 
-
-
-
     public FloatVar PlayerLives => lives;
     public FloatVar PlayerScore => currentPlayer;
 
     public string Winner => aPlayerScore.Value < bPlayerScore.Value ? "B is the Winner!!" :
             (aPlayerScore.Value > bPlayerScore.Value ? "A is the Winner!!" : "It's a TIE");
-
 
     private void Reset()
     {
@@ -75,9 +71,14 @@ public class GameSystem : ScriptableObject
         countProjectils++;
     }
 
-    public void OnHit(int chickenGrade)
+    public void OnHit(int chickenGrade, ChickenController chickenController = null)
     {
         Debug.Log($"Projectile hit {countProjectils}");
+
+        if ( chickenController != null )
+        {
+            chickenController.SplitChicken();
+        }
         --countProjectils;
         int score = chickenScore * chickenGrade;
         if (comboCounter > 0 && Time.realtimeSinceStartup - lastHitTime <= comboTimeout)
@@ -92,6 +93,7 @@ public class GameSystem : ScriptableObject
         }
         lastHitTime = Time.realtimeSinceStartup;
         currentPlayer.Increment(score);
+        Destroy(chickenController.gameObject);
     }
 
     public void OnMiss()

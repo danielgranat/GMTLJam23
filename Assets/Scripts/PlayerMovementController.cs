@@ -8,14 +8,8 @@ public class PlayerMovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0,0);
         controller.Move(move * Time.deltaTime * playerSpeed);
-
-        //if (move != Vector3.zero)
-        //{
-        //    gameObject.transform.forward = move;
-        //}
-  
         controller.Move(playerVelocity * Time.deltaTime);
     }
 }

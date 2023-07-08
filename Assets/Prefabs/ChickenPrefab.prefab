@@ -842,6 +842,7 @@ GameObject:
   - component: {fileID: 2187833531633703095}
   - component: {fileID: 2187833531633703098}
   - component: {fileID: 2187833531633703097}
+  - component: {fileID: 7773264770617353539}
   m_Layer: 0
   m_Name: ChickenPrefab
   m_TagString: Chicken
@@ -876,6 +877,7 @@ Transform:
   - {fileID: 9143064578908748911}
   - {fileID: 8837628553150476433}
   - {fileID: 2787857593076914627}
+  - {fileID: 877757594892979075}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -906,11 +908,11 @@ CharacterController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6249946507834217868}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ef23c42418555c045bd70f373d49ed38, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.56
+  m_Height: 3.6
   m_Radius: 1.63
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -933,6 +935,24 @@ MonoBehaviour:
   playerSpeed: 2
   jumpHeight: 5.06
   gravityValue: -9.81
+  moveDirection: {x: -1, y: 0, z: 0}
+  eggSpawnCooldown: 3
+  eggSpawnAim: {fileID: 877757594892979075}
+  eggPrefab: {fileID: 5237454994673946379, guid: 20c039ef7854e814183270ca42e57206, type: 3}
+--- !u!114 &7773264770617353539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6249946507834217868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85f6c5fdb24f5f448e8ea05970165e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chieckenPrefab: {fileID: 6249946507834217868}
+  tier: 5
 --- !u!1 &6407866974203617907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1285,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &9045888086450003999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 877757594892979075}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &877757594892979075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045888086450003999}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.22, y: -1.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6771045013202046774}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9146555047672452954
 GameObject:
   m_ObjectHideFlags: 0

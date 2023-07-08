@@ -8,6 +8,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private Vector3 direction = Vector3.up;
 
     private bool hitCeiling;
 
@@ -21,7 +22,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (hitCeiling) return;
 
-        rb.velocity = Vector3.up * Time.deltaTime * speed;
+        rb.velocity = direction * Time.deltaTime * speed;
         transform.Rotate(0, rotationSpeed, 0, Space.Self);
     }
 
@@ -29,7 +30,8 @@ public class ProjectileController : MonoBehaviour
     {
         if (other.CompareTag("Chicken"))
         {
-            gameSys.OnHit(1);
+            var chickenController = other.GetComponent<ChickenController>();
+            gameSys.OnHit(1, chickenController);
             Destroy(gameObject);
         }
 
