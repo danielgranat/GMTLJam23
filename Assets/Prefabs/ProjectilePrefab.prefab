@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameSys: {fileID: 11400000, guid: 35e46fe102500478fb3ecba2e26add1f, type: 2}
   rb: {fileID: 2049501200855905639}
-  speed: 200
+  speed: 300
   rotationSpeed: 6
 --- !u!54 &2049501200855905639
 Rigidbody:
