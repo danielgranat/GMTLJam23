@@ -23,6 +23,7 @@ public class GameSystem : ScriptableObject
     private float lastHitTime;
     private int comboCounter;
     private int countProjectils;
+    private int chickens = 0;
 
     public FloatVar PlayerLives => lives;
     public FloatVar PlayerScore => currentPlayer;
@@ -36,6 +37,7 @@ public class GameSystem : ScriptableObject
         comboCounter = 0;
         lastHitTime = 0;
         countProjectils = 0;
+        chickens = 0;
         lives.Decrement(lives.Value);
         lives.Increment(startLives);
 
@@ -43,6 +45,11 @@ public class GameSystem : ScriptableObject
         bPlayerScore.Decrement(bPlayerScore.Value);
 
         currentPlayer = aPlayerScore;
+    }
+
+    internal void registerChicken()
+    {
+        chickens++;
     }
 
     public void StartGame()
@@ -59,6 +66,10 @@ public class GameSystem : ScriptableObject
     public void ReverseRoles()
     {
         currentPlayer = bPlayerScore;
+        countProjectils = 0;
+        comboCounter = 0;
+        lastHitTime = 0;
+        chickens = 0;
 
         lives.Decrement(lives.Value);
         lives.Increment(startLives);
@@ -74,6 +85,7 @@ public class GameSystem : ScriptableObject
     public void OnHit(int chickenGrade, ChickenController chickenController = null)
     {
         Debug.Log($"Projectile hit {countProjectils}");
+        --chickens;
 
         if ( chickenController != null )
         {
@@ -94,6 +106,12 @@ public class GameSystem : ScriptableObject
         lastHitTime = Time.realtimeSinceStartup;
         currentPlayer.Increment(score);
         Destroy(chickenController.gameObject);
+
+
+        if(chickens <= 0)
+        {
+            CompleteLevel();
+        }
     }
 
     public void OnMiss()
@@ -142,6 +160,6 @@ public class GameSystem : ScriptableObject
         }
     }
 
-    public bool CanDevilFire => countProjectils.Equals(0);
+    public bool CanDevilFire => countProjectils <= 0;
     
 }

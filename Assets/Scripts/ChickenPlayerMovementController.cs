@@ -13,6 +13,7 @@ public class ChickenPlayerMovementController : MonoBehaviour
     [SerializeField] private float eggSpawnCooldown = 3;
     [SerializeField] private Transform eggSpawnAim;
     [SerializeField] private GameObject eggPrefab;
+    [SerializeField] private GameSystem gameSys;
 
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -28,6 +29,7 @@ public class ChickenPlayerMovementController : MonoBehaviour
     private void Awake()
     {
         timer = eggSpawnCooldown;
+        gameSys.registerChicken();
     }
 
     void Update()

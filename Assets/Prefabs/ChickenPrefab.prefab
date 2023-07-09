@@ -940,6 +940,7 @@ MonoBehaviour:
   eggSpawnCooldown: 3
   eggSpawnAim: {fileID: 877757594892979075}
   eggPrefab: {fileID: 5237454994673946379, guid: 20c039ef7854e814183270ca42e57206, type: 3}
+  gameSys: {fileID: 11400000, guid: 35e46fe102500478fb3ecba2e26add1f, type: 2}
 --- !u!114 &7773264770617353539
 MonoBehaviour:
   m_ObjectHideFlags: 0
